@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, session, redirect
 from openai import OpenAI
+from app.utils import format_response
 import os
 
 client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
@@ -43,8 +44,9 @@ def index():
         )
 
         assistant_response = response.choices[0].message.content
+        formatted_response = format_response(assistant_response)
         # Add the assistant's response to the history
-        session['history'].append({"role": "assistant", "content": assistant_response})
+        session['history'].append({"role": "assistant", "content": formatted_response})
 
         if len(session['history']) > 10:
             session['history'] = session['history'][-10:]
