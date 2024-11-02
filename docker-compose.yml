@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  bahele:
+    image: ${REGISTRY}/${ECR_REPOSITORY_NAME}:${WCD_VERSION}
+    restart: always
+    build: .
+    ports:
+      - "5001:5001"
+    volumes:
+      - .:/app
+    env_file:
+      - .env

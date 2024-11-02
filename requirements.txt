@@ -1,0 +1,5 @@
+Flask==2.2.5
+Flask-Session==0.7.0.rc2
+openai==1.52.2
+python-dotenv==1.0.1
+cachelib==0.13.0
