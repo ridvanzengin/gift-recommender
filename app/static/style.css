@@ -1588,6 +1588,7 @@ button {
 -----------------------------------------------*/
 .section-header {
   position: relative;
+  
 }
 
 .section-title {
@@ -2439,7 +2440,7 @@ footer#footer {
 
 
 .chat-container {
-    background-color: #EDEBE4;
+    background-color: #fdfdfc;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 15px; /* Reduced padding to decrease overall space */
@@ -2482,7 +2483,7 @@ button[type="button"] {
 }
 
 .assistant-message {
-    background-color: #F1F1F1;
+    background-color: #efeee8;
     border-left: 5px solid #74642F;
 }
 

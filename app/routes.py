@@ -22,9 +22,12 @@ def index():
             interests = request.form.get('interests')
 
             # Create the initial prompt for ChatGPT
-            prompt = f"Suggest a gift for a {age} year old {gender} for {occasion}. The budget is {budget}."
+            # prompt = f"Suggest a gift for a {age} year old {gender} for {occasion}. The budget is {budget}."
+            prompt = f" {age} yaşındaki bir {gender} için {occasion} hediyesi öner. Bütçe {budget}TL. Cevabı 5 madde ve türkçe olarak ilet"
+            
             if interests:
-                prompt += f" They are interested in {interests}."
+                #prompt += f" They are interested in {interests}."
+                prompt += f" İlgi alanları: {interests}."
 
             # Add user input to history
             session['history'].append({"role": "user", "content": prompt})
@@ -50,8 +53,11 @@ def index():
 
         if len(session['history']) > 10:
             session['history'] = session['history'][-10:]
+    shown_history=session.get('history', [])
+    if len(shown_history) > 1:
+        shown_history= shown_history[1:]
 
-    return render_template('index.html', history=session.get('history', []))
+    return render_template('index.html', history=shown_history)
 
 @main.route('/clear', methods=['GET'])
 def clear_history():
